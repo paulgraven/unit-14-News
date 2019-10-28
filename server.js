@@ -19,7 +19,8 @@ app.use(express.json());
 app.use(express.static("public"));
 
 // Connect to the Mongo DB
-mongoose.connect("mongodb://localhost/unit14news", function(error) {
+var db = process.env.MONGODB_URI || "mongodb://localhost/unit14news";
+mongoose.connect(db, function(error) {
   // log any errors connecting with mongoose
   if (error) {
     console.log(error);
