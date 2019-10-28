@@ -3,7 +3,7 @@ var logger = require("morgan");
 var mongoose = require("mongoose");
 var axios = require("axios");
 var cheerio = require("cheerio");
-
+require("dotenv").config();
 // Require all models
 var db = require("./models");
 
