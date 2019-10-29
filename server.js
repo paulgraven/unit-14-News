@@ -3,7 +3,7 @@ var logger = require("morgan");
 var mongoose = require("mongoose");
 var axios = require("axios");
 var cheerio = require("cheerio");
-require("dotenv").config();
+// require("dotenv").config();
 // Require all models
 var db = require("./models");
 
@@ -19,17 +19,22 @@ app.use(express.json());
 app.use(express.static("public"));
 
 // Connect to the Mongo DB
-var db = process.env.MONGODB_URI || "mongodb://localhost/unit14news";
-mongoose.connect(db, function(error) {
-  // log any errors connecting with mongoose
-  if (error) {
-    console.log(error);
-  }
-  // or log to a success message
-  else {
-    console.log("mongoose connection is successful");
-  }
-});
+
+var MONGODB_URI =
+  process.env.MONGODB_URI || "mongodb://localhost/mongoHeadlines";
+mongoose.connect(MONGODB_URI);
+
+// var db = process.env.MONGODB_URI || "mongodb://localhost/unit14news";
+// mongoose.connect(db, function(error) {
+//   // log any errors connecting with mongoose
+//   if (error) {
+//     console.log(error);
+//   }
+//   // or log to a success message
+//   else {
+//     console.log("mongoose connection is successful");
+//   }
+// });
 
 // Routes
 app.get("/scrape", function(req, res) {
